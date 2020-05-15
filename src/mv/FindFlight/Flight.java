@@ -7,8 +7,6 @@ public class Flight {
 	private String destination;
 	private String cost;
 	private String miles;
-	
-
 
 	public Flight(String number, String origin, String destination, String cost, String miles) {
 		super();
@@ -19,75 +17,58 @@ public class Flight {
 		this.miles = miles;
 	}
 
-
+	public Flight() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public String getNumber() {
 		return number;
 	}
 
-
-
 	public void setNumber(String number) {
 		this.number = number;
 	}
-
-
 
 	public String getOrigin() {
 		return origin;
 	}
 
-
-
 	public void setOrigin(String origin) {
 		this.origin = origin;
 	}
-
-
 
 	public String getDestination() {
 		return destination;
 	}
 
-
-
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-
-
 
 	public String getCost() {
 		return cost;
 	}
 
-
-
 	public void setCost(String cost) {
 		this.cost = cost;
 	}
-
-
 
 	public String getMiles() {
 		return miles;
 	}
 
-
-
 	public void setMiles(String miles) {
 		this.miles = miles;
 	}
 
+	public void Print() {
+		System.out.println("Flight Number:" + number);
+		System.out.print("Price " + cost);
+		System.out.print(" Origin " + origin);
+		System.out.print(" Destination " + destination);
+		System.out.println(" Miles " + miles);
 
-
-	public void Print () {
-		System.out.println("*********Flight Number:" + number);
-		System.out.println("Price " + cost);
-		System.out.println("Origin " + origin);
-		System.out.println("Destination " + destination);
-		System.out.println("Miles " + miles);
-			
 	}
 
 	@Override
@@ -138,6 +119,5 @@ public class Flight {
 			return false;
 		return true;
 	}
-	
-	
+
 }
