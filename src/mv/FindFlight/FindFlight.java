@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class FindFlight {
 
-	public static void main(String[] args) throws FileNotFoundException, IOException {
+	public static void main(String[] args) throws FileNotFoundException, IOException, FlightFinderException {
 
 		//FlightFinder.AllFlights();
 
@@ -15,9 +15,9 @@ public class FindFlight {
 		ArrayList<String> flightNos = new ArrayList<String>();
 		flightNos.add("100");
 		flightNos.add("300");
-		//FlightFinder.SpecificFlights(flightNos);
+		FlightFinder.SpecificFlights(flightNos);
 		
-		FlightFinder.HighestCostFlight();
+		//FlightFinder.HighestCostFlight();
 	}
 
 }

@@ -1,6 +1,6 @@
 package mv.FindFlight;
 
-public class Flight {
+public class Flight implements Comparable <Flight> {
 
 	private String number;
 	private String origin;
@@ -75,11 +75,12 @@ public class Flight {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cost == null) ? 0 : cost.hashCode());
-		result = prime * result + ((destination == null) ? 0 : destination.hashCode());
-		result = prime * result + ((miles == null) ? 0 : miles.hashCode());
-		result = prime * result + ((number == null) ? 0 : number.hashCode());
-		result = prime * result + ((origin == null) ? 0 : origin.hashCode());
+		//result = prime * result + ((cost == null) ? 0 : cost.hashCode());
+		//result = prime * result + ((destination == null) ? 0 : destination.hashCode());
+		//result = prime * result + ((miles == null) ? 0 : miles.hashCode());
+		//result = prime * result + ((number == null) ? 0 : number.hashCode());
+		//result = prime * result + ((origin == null) ? 0 : origin.hashCode());
+		result = prime * result + ((number == null) ? 0 : Integer.parseInt(number));
 		return result;
 	}
 
@@ -120,4 +121,13 @@ public class Flight {
 		return true;
 	}
 
+	@Override
+	public int compareTo(Flight flt) {
+		Double thisMiles = Double.parseDouble(this.getMiles());
+		Double fltMiles = Double.parseDouble(flt.getMiles());
+		return thisMiles.compareTo(fltMiles);
+	}
+
+	
+	
 }

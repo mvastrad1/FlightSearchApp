@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -29,7 +30,7 @@ public class FlightFinder {
 
 		}
 		objReader.close();
-
+		Collections.sort(dataList);
 		System.out.println("All flights requested List size :" + dataList.size());
 		for (Flight flight : dataList) {
 			flight.Print();
@@ -62,8 +63,19 @@ public class FlightFinder {
 		// I can return dataSet if needed 
 	}
 
-	public static void SpecificFlights(ArrayList<String> flightNos) throws FileNotFoundException, IOException {
+	public static void SpecificFlights(ArrayList<String> flightNos) throws FileNotFoundException, IOException, FlightFinderException {
 		//This will return only requested flights form the file
+
+		//Check if incoming list is empty
+		if (flightNos.isEmpty()) {
+			throw new FlightFinderException ("101", "List cannot be empty");
+		}
+
+		Set<String> inList = new HashSet<String>(flightNos);
+		if (inList.size() != flightNos.size()) {
+			throw new FlightFinderException ("102", "Duplicate valies in the list not allowed");
+		}
+		
 		HashMap<String, Flight> dataHashMap = new HashMap<String, Flight>();
 
 		BufferedReader objReader = new BufferedReader(new FileReader(
@@ -82,8 +94,16 @@ public class FlightFinder {
 
 		Set<Flight> flightList = new HashSet<Flight>();
 
+		
 		for (String flightNo : flightNos) {
-			flightList.add(dataHashMap.get(flightNo));
+			if (dataHashMap.containsKey(flightNo)) {
+				flightList.add(dataHashMap.get(flightNo));
+			}
+			else {
+				throw new FlightFinderException("100", "Flight does not exist");
+			}
+			
+			
 		}
 
 		System.out.println("Specific flights requested List size :" + flightList.size());
