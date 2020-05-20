@@ -6,20 +6,30 @@ public class Flight implements Comparable <Flight> {
 	private String origin;
 	private String destination;
 	private String cost;
+	private String currency;
 	private String miles;
 
-	public Flight(String number, String origin, String destination, String cost, String miles) {
+	public Flight(String number, String origin, String destination, String cost, String currency, String miles) {
 		super();
 		this.number = number;
 		this.origin = origin;
 		this.destination = destination;
 		this.cost = cost;
+		this.currency = currency;
 		this.miles = miles;
 	}
 
 	public Flight() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
 	}
 
 	public String getNumber() {
@@ -128,6 +138,11 @@ public class Flight implements Comparable <Flight> {
 		return thisMiles.compareTo(fltMiles);
 	}
 
+	public int compareByPrice(Flight flt) {
+		Double thisCost = Double.parseDouble(this.getCost());
+		Double fltCost = Double.parseDouble(flt.getCost());
+		return thisCost.compareTo(fltCost);
+	}
 	
 	
 }
